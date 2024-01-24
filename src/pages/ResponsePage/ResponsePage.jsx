@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../css/ResponsePage.css'
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../components/loading';
 
 export default function ResponsePage() {
   const [physioFormData, setPhysioFormData] = useState([]);
   const [treatmentData, setTreatmentData] = useState([]);
+  const [loading, setLoading] = useState(true)
   const userId = localStorage.getItem('decoded_token');
   const isSuperUser = localStorage.getItem('isSuperUser') === 'true';
   const [message, setMessage] = useState("A Physio will look to answer your query as soon as they can! In the mean time why don't you check out the useful information we have to offer in our other pages!")
@@ -38,18 +40,21 @@ export default function ResponsePage() {
               const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
               const mostRecentPhysioformData = sortedData[0];
               setPhysioFormData([mostRecentPhysioformData]);
+              
             } else {
-              // If the user is a superuser, set all physioform data
               const physioformsWithoutTreatments = data.filter((physioform) => !physioform.treatment_complete);
               setPhysioFormData(physioformsWithoutTreatments);
+              
               
             }
           } else {
             console.error("Physioform data is not an array:", data);
           }
         }
+        setLoading(false)
       } catch (error) {
         console.log("Error fetching physioform data", error);
+        setLoading(false)
       }
     }
 
@@ -79,13 +84,16 @@ export default function ResponsePage() {
             if (data.length > 0) { 
             setTreatmentData(data);
             setMessage('')
+            
             // localStorage.setItem("physio_form", physioFormId);
           } else {
             console.error("Treatment data is not an array:", data);
           }
         }
+        setLoading(false)
         } catch (error) {
           console.log("Error fetching treatment data", error);
+          setLoading(false)
         }
       }
 
@@ -128,6 +136,11 @@ export default function ResponsePage() {
   return (
     <div className="container">
       <h1>Physioform Details</h1>
+      {loading ? (
+        <Loading /> // Render the loading component while data is being fetched
+      ) : (
+        // Render your data when loading is false
+        <>
       {physioFormData.length > 0 ? (
         physioFormData.map((formData, index) => (
           <div className="physioform-container" key={index}>
@@ -179,6 +192,8 @@ export default function ResponsePage() {
         </div>
       ) : (
         <p>{!isSuperUser ? "" : ""}</p>
+      )}
+        </>
       )}
     </div>
   );
