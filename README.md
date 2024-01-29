@@ -26,7 +26,7 @@ My aim for the final project was to build a full-stack website using a Django ba
 
 ## Technologies Used
 
-CSS, HTML, Vanilla JavaScript ES6, Django, Django Rest Framework, PostgreSQL,  React, Python
+CSS, HTML, Vanilla JavaScript ES6, Django, Django Rest Framework, PostgreSQL, React, Python
 
 ## Brief
 
@@ -443,7 +443,7 @@ After some debugging, I identified that the error occurred because the physiofor
 ## Key Learnings/Takeaways
 
 - With this being the final project of the course I had become much more confident with stand ups and in my ability to communicate what part of the project I was working on and any blockers I had along with the plan I had for that day
-- I am much more confident using Django along with postgreSQL
+- I am much more confident using Django along with PostgreSQL
 - With this being the second project using react I also have much more confidence using this for my front end
 - With several issues deploying previous projects I most definitely found this project the most straightforward to deploy and was pleased to be able deploy with very few problems
 
