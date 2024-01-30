@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 export default function Discussion() {
     const [messages,setMessages] = useState([])
     const [discussionMessage, setDiscussionMessage] = useState('')
-    const name = localStorage.getItem('name')
+    // const name = localStorage.getItem('name')
 
     async function fetchMessages() {
         try {
