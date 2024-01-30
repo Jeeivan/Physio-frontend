@@ -20,6 +20,7 @@ export default function NavBar() {
             <Link to='/response'>Response Page</Link>
             <Link to='/exercise'>Exercises</Link>
             <Link to='/Management'>Management</Link>
+            <Link to='Discussion'>Discussion</Link>
             <Link to='/faq'>FAQ</Link>
             <Link to='/logout'>Logout</Link>
             </>

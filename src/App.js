@@ -13,6 +13,7 @@ import './App.css'
 import PhysioFormUpdate from "./pages/PhysioForm/PhysioFormUpdate";
 import Treatment from "./pages/Treatment/Treatment";
 import Footer from "./components/Footer/Footer";
+import Discussion from "./pages/Discussion/Discussion";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route path='/exercise' element={<Exercise />} />
         <Route path='/management' element={<Management />} />
         <Route path='/faq' element={<Faq />} />
+        <Route path='/discussion' element={<Discussion />} />
         <Route path="/treatments/add/:id" element={<Treatment />}/>
       </Routes>
       <Footer />
