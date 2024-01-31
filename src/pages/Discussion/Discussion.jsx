@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 export default function Discussion() {
     const [messages,setMessages] = useState([])
     const [discussionMessage, setDiscussionMessage] = useState('')
-    // const name = localStorage.getItem('name')
+    const username = localStorage.getItem('name')
 
     async function fetchMessages() {
         try {
@@ -35,7 +35,8 @@ export default function Discussion() {
                     'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
                 },
                 body: JSON.stringify({
-                    message: discussionMessage
+                    message: discussionMessage,
+                    name: username
                 }),
             })
 
@@ -66,7 +67,10 @@ export default function Discussion() {
         <h3>Discussion</h3>
         <ul>
             {messages.map((message, index) => (
-                <li key={index}>{message.message}</li>
+                <li key={index}>
+                    <p>{message.name}-</p>
+                    <p>{message.message}</p>
+                    </li>
             ))}
         </ul>
         <div>
