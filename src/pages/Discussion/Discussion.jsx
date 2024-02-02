@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react"
+import '../../css/Discussion.css'
+import Loading from '../../components/loading';
 
 export default function Discussion() {
     const [messages,setMessages] = useState([])
     const [discussionMessage, setDiscussionMessage] = useState('')
-    const username = localStorage.getItem('name')
+    const [loading, setLoading] = useState(true)
+    const isSuperUser = localStorage.getItem('isSuperUser') === 'true';
+    let username = localStorage.getItem('name')
+
+    if (isSuperUser) {
+        username = username + "(admin)"
+    }
 
     async function fetchMessages() {
         try {
@@ -20,9 +28,11 @@ export default function Discussion() {
                 setMessages(data)
             } else {
                 console.log("Error loading messages")
-            } 
+            }
+            setLoading(false)
         } catch (error) {
             console.error("Error fetching messages", error)
+            setLoading(false)
         }
     }
 
@@ -63,12 +73,17 @@ export default function Discussion() {
 
 
   return (
-    <div>
-        <h3>Discussion</h3>
-        <ul>
+    <div className="discussion-container">
+        <h1 className="discussion-header">Discussion</h1>
+        {loading ? (
+            <Loading />
+        ) : (
+
+        <>
+        <ul className="messages">
             {messages.map((message, index) => (
                 <li key={index}>
-                    <p>{message.name}-</p>
+                    <p className="name-display">{message.name}-</p>
                     <p>{message.message}</p>
                     </li>
             ))}
@@ -78,8 +93,10 @@ export default function Discussion() {
             value={discussionMessage}
             onChange={(e) => setDiscussionMessage(e.target.value)}
             />
-            <button onClick={createMessage}>Send</button>
+            <button className="send-btn" onClick={createMessage}>Send</button>
         </div>
+        </>
+        )}
     </div>
   )
 }
