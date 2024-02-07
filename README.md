@@ -447,11 +447,65 @@ After some debugging, I identified that the error occurred because the physiofor
 - With this being the second project using react I also have much more confidence using this for my front end
 - With several issues deploying previous projects I most definitely found this project the most straightforward to deploy and was pleased to be able deploy with very few problems
 
-## Future Improvements
+## Additions post Bootcamp
 
-- If I had more time I would create another entity for user profile that would include their age so the user would not have to implement this every time they made a query
-- I would also include a time for their last query in this entity as currently if the user deletes their query they can make another one therefore bypassing the one month time limit I set
-- I would also spend more time to create a comment section at the bottom of the management page so that users have a way of interacting with each other and can even share their personal experiences
+Incorporated a loading display feature to enhance the user experience by preventing an empty screen during the response page loading phase. I was pleased with how straight forward this was to implement with the use of states.
+
+```
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        let apiUrl = `${process.env.REACT_APP_BACKEND_URL}/physioform/`;
+
+        // If the user is not a superuser, fetch only their most recent physioform data
+        if (!isSuperUser) {
+          apiUrl += `user/${userId}`;
+        }
+
+        const response = await fetch(apiUrl, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (Array.isArray(data)) {
+          if (data.length > 0) { 
+            if (!isSuperUser) {
+              // If the user is not a superuser, sort and get the most recent entry
+              const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+              const mostRecentPhysioformData = sortedData[0];
+              setPhysioFormData([mostRecentPhysioformData]);
+              
+            } else {
+              const physioformsWithoutTreatments = data.filter((physioform) => !physioform.treatment_complete);
+              setPhysioFormData(physioformsWithoutTreatments);
+              
+              
+            }
+          } else {
+            console.error("Physioform data is not an array:", data);
+          }
+        }
+        setLoading(false)
+      } catch (error) {
+        console.log("Error fetching physioform data", error);
+        setLoading(false)
+      }
+    }
+
+    fetchData();
+    // eslint-disable-next-line
+  }, [isSuperUser, userId]);
+
+```
+
+
 
 
 
