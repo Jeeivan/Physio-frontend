@@ -449,6 +449,8 @@ After some debugging, I identified that the error occurred because the physiofor
 
 ## Additions post Bootcamp
 
+**Loading Screen**
+
 Incorporated a loading display feature to enhance the user experience by preventing an empty screen during the response page loading phase. I was pleased with how straight forward this was to implement with the use of states.
 
 ```
@@ -505,7 +507,7 @@ Incorporated a loading display feature to enhance the user experience by prevent
 
 ```
 
-
+**Discussion Page**
 
 
 
