@@ -509,5 +509,7 @@ Incorporated a loading display feature to enhance the user experience by prevent
 
 **Discussion Page**
 
+- Able to add a page where users are able to chat amongst each other through messages in real time
+
 
 
