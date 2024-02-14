@@ -16,7 +16,7 @@ My aim for the final project was to build a full-stack website using a Django ba
 - [Challenges](#challenges)
 - [Wins](#wins)
 - [Key Learnings/Takeaways](#key-learningstakeaways)
-- [Future Improvements](#future-improvements)
+- [Additions](#additions-post-bootcamp)
 
 ## Deployment Link
 
