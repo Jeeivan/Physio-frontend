@@ -447,7 +447,7 @@ After some debugging, I identified that the error occurred because the physiofor
 - With this being the second project using react I also have much more confidence using this for my front end
 - With several issues deploying previous projects I most definitely found this project the most straightforward to deploy and was pleased to be able deploy with very few problems
 
-## Additions post Bootcamp
+## Additions Post Bootcamp
 
 **Loading Screen**
 
