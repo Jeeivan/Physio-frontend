@@ -83,7 +83,7 @@ export default function Discussion() {
         <ul className="messages">
             {messages.map((message, index) => (
                 <li key={index}>
-                    <p className="name-display">{message.name}-</p>
+                    <p className="name-display">{message.name}:</p>
                     <p>{message.message}</p>
                     </li>
             ))}
