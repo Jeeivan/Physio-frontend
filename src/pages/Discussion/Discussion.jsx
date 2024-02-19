@@ -93,7 +93,7 @@ export default function Discussion() {
             value={discussionMessage}
             onChange={(e) => setDiscussionMessage(e.target.value)}
             />
-            <button className="send-btn" onClick={createMessage}>Send</button>
+            <button className="send-btn" onClick={createMessage}>Send Message</button>
         </div>
         </>
         )}
