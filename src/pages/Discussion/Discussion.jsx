@@ -91,6 +91,7 @@ export default function Discussion() {
         <div>
             <input type="text"
             value={discussionMessage}
+            placeholder="Enter message here"
             onChange={(e) => setDiscussionMessage(e.target.value)}
             />
             <button className="send-btn" onClick={createMessage}>Send Message</button>
