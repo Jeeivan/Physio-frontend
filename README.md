@@ -439,7 +439,6 @@ After some debugging, I identified that the error occurred because the physiofor
 }
 ```
 
-
 ## Key Learnings/Takeaways
 
 - With this being the final project of the course I had become much more confident with stand ups and in my ability to communicate what part of the project I was working on and any blockers I had along with the plan I had for that day
